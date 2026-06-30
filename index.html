@@ -1,952 +1,534 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KlukvaDesign | Контент-креатор & Фотограф</title>
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-      :root {
-        --bg-main: #0c0c0c;
-        --bg-alt: #141414;
-        --accent-main: #e83a45;
-        --accent-hover: #ff4d58;
-        --text-main: #ffffff;
-        --text-muted: #9e9e9e;
-        --border-color: rgba(255, 255, 255, 0.1);
-      }
-
-      html,
-      body {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-        background-color: var(--bg-main);
-        color: var(--text-main);
-        font-family: "Montserrat", sans-serif;
-        margin: 0;
-        padding: 0;
-        line-height: 1.6;
-        scroll-padding-top: 80px;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      /* ================= ШАПКА ================= */
-      header {
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 2000;
-        left: 0;
-        padding: 15px 4%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: rgba(12, 12, 12, 0.95);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border-bottom: 1px solid var(--border-color);
-      }
-
-      /* ЛОГОТИП С ВЕТОЧКОЙ */
-      .logo-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        z-index: 2100;
-      }
-
-      /* Отрисовка клюквы по образцу iStock */
-      .cranberry-svg {
-        width: 35px;
-        height: 35px;
-        overflow: visible;
-      }
-      .berry {
-        fill: var(--accent-main);
-        filter: drop-shadow(0 0 2px rgba(232, 58, 69, 0.5));
-        animation: berryGlint 4s infinite;
-      }
-      .leaf {
-        fill: #4caf50;
-      }
-      .stem {
-        fill: none;
-        stroke: #6d4c41;
-        stroke-width: 1.5;
-        stroke-linecap: round;
-      }
-      .berry-star {
-        fill: rgba(255, 255, 255, 0.6);
-      } /* Те самые звездочки на ягодах */
-
-      @keyframes berryGlint {
-        0%,
-        100% {
-          filter: brightness(1) drop-shadow(0 0 2px var(--accent-main));
-        }
-        50% {
-          filter: brightness(1.3) drop-shadow(0 0 8px var(--accent-main));
-        }
-      }
-
-      .logo-text {
-        font-size: 16px;
-        font-weight: 700;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: var(--text-main);
-      }
-      .logo-text span {
-        background: linear-gradient(
-          to right,
-          #fff 20%,
-          var(--accent-main) 50%,
-          #fff 80%
-        );
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        animation: textShine 4s linear infinite;
-      }
-      @keyframes textShine {
-        to {
-          background-position: 200% center;
-        }
-      }
-
-      /* МЕНЮ ДЛЯ ДЕСКТОПА */
-      nav {
-        display: flex;
-        gap: 25px;
-        align-items: center;
-      }
-      nav a {
-        color: var(--text-main);
-        text-decoration: none;
-        font-size: 10px;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 1.2px;
-        transition: 0.3s;
-        cursor: pointer;
-        opacity: 0.8;
-      }
-      nav a:hover {
-        color: var(--accent-main);
-        opacity: 1;
-      }
-
-      .header-btn {
-        padding: 10px 20px;
-        background: var(--accent-main);
-        color: #fff;
-        border-radius: 4px;
-        font-weight: 700;
-        text-transform: uppercase;
-        font-size: 11px;
-        letter-spacing: 1px;
-        text-decoration: none;
-        transition: 0.3s;
-      }
-      .header-btn:hover {
-        background: var(--accent-hover);
-        box-shadow: 0 5px 15px rgba(232, 58, 69, 0.4);
-      }
-
-      .menu-toggle {
-        display: none;
-        cursor: pointer;
-        z-index: 2100;
-      }
-
-      /* ================= ГЛАВНЫЙ ЭКРАН ================= */
-      .hero {
-        min-height: 100vh;
-        padding: 120px 5% 50px;
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 40px;
-        align-items: center;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-      .hero-text h1 {
-        font-size: 3.2rem;
-        font-weight: 800;
-        line-height: 1.1;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-      }
-      .hero-text h1 span {
-        color: var(--accent-main);
-      }
-      .hero-text h2 {
-        font-size: 1rem;
-        color: var(--accent-main);
-        margin-bottom: 25px;
-        font-weight: 600;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-      }
-      .hero-text p {
-        color: var(--text-muted);
-        font-size: 1rem;
-        margin-bottom: 40px;
-        max-width: 450px;
-      }
-      .hero-buttons {
-        display: flex;
-        gap: 15px;
-      }
-
-      .hero-img {
-        position: relative;
-      }
-      .hero-img img {
-        width: 100%;
-        max-width: 480px;
-        border-radius: 15px;
-        display: block;
-        margin: 0 auto;
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-      }
-      .hero-img::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border: 1px solid var(--accent-main);
-        border-radius: 15px;
-        top: 15px;
-        right: -15px;
-        z-index: -1;
-        max-width: 480px;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        transform: translateX(15px);
-        opacity: 0.5;
-      }
-
-      /* ================= СЕКЦИИ ================= */
-      section {
-        padding: 90px 5%;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-      .section-alt {
-        background-color: var(--bg-alt);
-        max-width: 100%;
-      }
-      .container {
-        max-width: 1300px;
-        margin: 0 auto;
-      }
-      .section-title {
-        font-size: 2.2rem;
-        margin-bottom: 50px;
-        text-transform: uppercase;
-        font-weight: 800;
-        text-align: center;
-        letter-spacing: 2px;
-      }
-      .section-title span {
-        color: var(--accent-main);
-      }
-
-      /* ================= ДО / ПОСЛЕ ================= */
-      .ba-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-      }
-      .ba-slider-container {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 3/4;
-        border-radius: 8px;
-        overflow: hidden;
-        border: 1px solid var(--border-color);
-        --position: 50%;
-      }
-      .ba-slider-img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-      }
-      .ba-slider-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .img-before {
-        z-index: 2;
-        clip-path: polygon(
-          0 0,
-          var(--position) 0,
-          var(--position) 100%,
-          0 100%
-        );
-      }
-      .slider-line {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: var(--position);
-        width: 2px;
-        background: #fff;
-        transform: translateX(-50%);
-        z-index: 5;
-      }
-      .slider-button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: var(--accent-main);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-      }
-      .slider-button svg {
-        width: 18px;
-        height: 18px;
-        fill: #fff;
-      }
-      .ba-range {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        cursor: ew-resize;
-        z-index: 10;
-        margin: 0;
-      }
-      .ba-label {
-        position: absolute;
-        top: 12px;
-        padding: 4px 12px;
-        border-radius: 2px;
-        font-size: 10px;
-        font-weight: 800;
-        color: #fff;
-        background: rgba(0, 0, 0, 0.7);
-      }
-      .label-before {
-        left: 12px;
-        z-index: 3;
-        border-left: 2px solid var(--accent-main);
-      }
-      .label-after {
-        right: 12px;
-        z-index: 1;
-      }
-
-      /* ================= ПОРТФОЛИО ================= */
-      .filters {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 40px;
-        justify-content: center;
-      }
-      .filter-btn {
-        background: transparent;
-        border: 1px solid var(--border-color);
-        color: var(--text-muted);
-        padding: 8px 18px;
-        border-radius: 2px;
-        cursor: pointer;
-        transition: 0.3s;
-        font-size: 11px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-      .filter-btn:hover {
-        border-color: var(--accent-main);
-        color: #fff;
-      }
-      .filter-btn.active {
-        background: var(--accent-main);
-        color: #fff;
-        border-color: var(--accent-main);
-      }
-
-      .empty-state {
-        display: none;
-        text-align: center;
-        width: 100%;
-        padding: 60px 20px;
-        color: var(--text-muted);
-        font-size: 1rem;
-        border: 1px dashed var(--border-color);
-        border-radius: 4px;
-      }
-      .empty-state.show {
-        display: block;
-      }
-
-      .gallery-grid {
-        column-count: 4;
-        column-gap: 15px;
-      }
-      .gallery-item {
-        break-inside: avoid;
-        margin-bottom: 15px;
-        border-radius: 4px;
-        overflow: hidden;
-        transition: 0.3s;
-        cursor: zoom-in;
-      }
-      .gallery-item img {
-        width: 100%;
-        display: block;
-        transition: 0.5s;
-      }
-      .gallery-item:hover img {
-        transform: scale(1.03);
-      }
-      .gallery-item.hide {
-        display: none;
-      }
-
-      /* ================= ДИПЛОМЫ ================= */
-      .cert-card img {
-        width: 100%;
-        border-radius: 4px;
-        filter: grayscale(0.5);
-        transition: 0.3s;
-      }
-      .cert-card:hover img {
-        filter: grayscale(0);
-      }
-
-      /* ================= ПОДВАЛ ================= */
-      footer {
-        background: #050505;
-        padding: 70px 5% 30px;
-        border-top: 1px solid var(--border-color);
-      }
-      .footer-grid {
-        display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr 1fr;
-        gap: 40px;
-        max-width: 1300px;
-        margin: 0 auto 50px;
-      }
-      .footer-col h4 {
-        font-size: 13px;
-        color: #fff;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-      }
-      .footer-col p {
-        color: var(--text-muted);
-        font-size: 13px;
-        line-height: 1.8;
-      }
-      .footer-links {
-        list-style: none;
-      }
-      .footer-links li {
-        margin-bottom: 10px;
-      }
-      .footer-links a {
-        color: var(--text-muted);
-        text-decoration: none;
-        font-size: 13px;
-        transition: 0.3s;
-        cursor: pointer;
-      }
-      .footer-links a:hover {
-        color: var(--accent-main);
-      }
-      .social-icons {
-        display: flex;
-        gap: 12px;
-      }
-      .social-icons a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: #111;
-        border: 1px solid var(--border-color);
-        transition: 0.3s;
-      }
-      .social-icons a svg {
-        width: 16px;
-        height: 16px;
-        fill: #fff;
-      }
-      .social-icons a:hover {
-        background: var(--accent-main);
-        border-color: var(--accent-main);
-        transform: translateY(-3px);
-      }
-      .footer-bottom {
-        text-align: center;
-        padding-top: 30px;
-        border-top: 1px solid var(--border-color);
-        color: #444;
-        font-size: 11px;
-        letter-spacing: 1px;
-      }
-
-      /* ================= МОБИЛЬНЫЙ АДАПТИВ ================= */
-      @media (max-width: 1150px) {
-        nav {
-          display: none;
-        }
-        .menu-toggle {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          width: 28px;
-          height: 18px;
-        }
-        .menu-toggle span {
-          display: block;
-          width: 100%;
-          height: 2px;
-          background: var(--accent-main);
-          transition: 0.3s;
-        }
-        .menu-toggle.active span:nth-child(1) {
-          transform: translateY(8px) rotate(45deg);
-        }
-        .menu-toggle.active span:nth-child(2) {
-          opacity: 0;
-        }
-        .menu-toggle.active span:nth-child(3) {
-          transform: translateY(-8px) rotate(-45deg);
+        :root {
+            --bg-main: #121212;          
+            --bg-alt: #1a1a1a; 
+            --accent-main: #e83a45; /* Сочный "Клюквенный" акцент */     
+            --accent-hover: #ff4d58;        
+            --text-main: #ffffff;
+            --text-muted: #9e9e9e;
+            --border-color: #333333;
         }
 
-        nav.mobile-nav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(12, 12, 12, 0.99);
-          display: flex;
-          transform: translateX(-100%);
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 30px;
-          z-index: 1900;
-          transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-        nav.mobile-nav.active {
-          transform: translateX(0);
-        }
-        nav.mobile-nav a {
-          font-size: 16px;
-          display: block;
-        }
-      }
+        /* ГЛОБАЛЬНЫЙ СБРОС (Убиваем синие ссылки навсегда) */
+        a { text-decoration: none; color: inherit; }
 
-      @media (max-width: 900px) {
-        .hero {
-          grid-template-columns: 1fr;
-          text-align: center;
-          padding-top: 130px;
+        html, body { 
+            width: 100%; max-width: 100%; overflow-x: hidden; 
+            scroll-behavior: smooth; background-color: var(--bg-main); 
+            color: var(--text-main); font-family: 'Montserrat', sans-serif; 
+            margin: 0; padding: 0; line-height: 1.6;
+            scroll-padding-top: 90px; 
         }
-        .hero-text h1 {
-          font-size: 2.2rem;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ================= ШАПКА И ЛОГОТИП ================= */
+        header { 
+            position: fixed; width: 100%; top: 0; z-index: 2000; left: 0;
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; 
+            background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-color); transition: all 0.3s;
         }
-        .hero-buttons {
-          justify-content: center;
-          flex-direction: column;
+        
+        .logo-wrapper { display: flex; align-items: center; gap: 8px; z-index: 2100; cursor: pointer; }
+        
+        /* Векторная клюква с двойной анимацией (качание + пульсация ягод) */
+        .cranberry-icon { 
+            width: 32px; height: 32px; stroke: var(--accent-main); fill: none; 
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; 
+            animation: sway 4s ease-in-out infinite alternate; 
         }
-        .gallery-grid {
-          column-count: 2;
+        
+        .cranberry-berry { 
+            stroke: none; 
+            animation: berryPulse 3s linear infinite; /* Анимация переливания клюквы */
         }
-        .footer-grid {
-          grid-template-columns: 1fr 1fr;
+        
+        @keyframes sway {
+            0% { transform: rotate(-8deg); }
+            100% { transform: rotate(8deg); }
         }
-      }
-      @media (max-width: 500px) {
-        .footer-grid {
-          grid-template-columns: 1fr;
-          text-align: center;
+
+        @keyframes berryPulse {
+            0% { fill: var(--accent-main); filter: drop-shadow(0 0 2px rgba(232,58,69,0.5)); }
+            50% { fill: #ff8a92; filter: drop-shadow(0 0 8px rgba(255,138,146,0.8)); }
+            100% { fill: var(--accent-main); filter: drop-shadow(0 0 2px rgba(232,58,69,0.5)); }
         }
-        .social-icons {
-          justify-content: center;
+
+        .logo-text { font-size: 20px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--text-main); }
+        .logo-text span { 
+            background: linear-gradient(to right, var(--accent-main), #ff8a92, var(--accent-main));
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 3s linear infinite;
         }
-        .gallery-grid {
-          column-count: 1;
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* Главное меню (Исправлено для ПК) */
+        nav { display: flex; gap: 1.5vw; align-items: center; }
+        nav a { 
+            color: var(--text-main); font-size: 10px; font-weight: 700; 
+            text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s; 
+            cursor: pointer; white-space: nowrap; /* Запрет переноса строк */
         }
-      }
+        nav a:hover { color: var(--accent-main); }
+
+        .btn { padding: 12px 25px; border-radius: 4px; font-weight: 600; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; text-decoration: none; transition: 0.3s; display: inline-block; cursor: pointer; text-align: center;}
+        .btn-primary { background: var(--accent-main) !important; color: #fff !important; border: none; }
+        .btn-primary:hover { background: var(--accent-hover) !important; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(232, 58, 69, 0.3); }
+        .btn-outline { background: transparent !important; color: #fff !important; border: 1px solid #fff; }
+        .btn-outline:hover { border-color: var(--accent-main); color: var(--accent-main) !important; }
+
+        .menu-toggle { display: none; cursor: pointer; z-index: 2100; }
+
+        /* ================= ГЛАВНЫЙ ЭКРАН ================= */
+        .hero { 
+            min-height: 100vh; padding: 120px 5% 50px; 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; 
+            max-width: 1400px; margin: 0 auto;
+        }
+        .hero-text h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; text-transform: uppercase;}
+        .hero-text h2 { font-size: 1.2rem; color: var(--accent-main); margin-bottom: 30px; font-weight: 600; letter-spacing: 2px;}
+        .hero-text p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px; max-width: 500px; }
+        .hero-buttons { display: flex; gap: 20px; }
+        
+        .hero-img { position: relative; }
+        .hero-img img { width: 100%; max-width: 500px; border-radius: 20px; display: block; margin: 0 auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); object-fit: cover;}
+        .hero-img::before { content: ''; position: absolute; width: 100%; height: 100%; border: 2px solid var(--accent-main); border-radius: 20px; top: 20px; right: -20px; z-index: -1; max-width: 500px; margin: 0 auto; left: 0; right: 0; transform: translateX(20px);}
+
+        /* ================= СЕКЦИИ ================= */
+        section { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
+        .section-alt { background-color: var(--bg-alt); max-width: 100%; }
+        .section-alt .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+        .section-title { font-size: 2.5rem; margin-bottom: 50px; text-transform: uppercase; font-weight: 800; text-align: center;}
+        .section-title span { color: var(--accent-main); }
+
+        /* ================= ДО / ПОСЛЕ ================= */
+        .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .ba-slider-container { position: relative; width: 100%; aspect-ratio: 4/5; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-color); --position: 50%; }
+        .ba-slider-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .ba-slider-img img { width: 100%; height: 100%; object-fit: cover; }
+        .img-after { z-index: 1; }
+        .img-before { z-index: 2; clip-path: polygon(0 0, var(--position) 0, var(--position) 100%, 0 100%); }
+        .slider-line { position: absolute; top: 0; bottom: 0; left: var(--position); width: 2px; background: #fff; transform: translateX(-50%); z-index: 5; pointer-events: none; }
+        .slider-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; border-radius: 50%; background: var(--accent-main); display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .slider-button svg { width: 20px; height: 20px; fill: #fff; }
+        .ba-range { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 10; margin: 0; padding: 0; }
+        .ba-label { position: absolute; top: 15px; padding: 5px 15px; border-radius: 4px; font-size: 11px; font-weight: 800; letter-spacing: 1px; color: #fff; background: rgba(0,0,0,0.8); text-transform: uppercase;}
+        .label-before { left: 15px; z-index: 3; border-left: 2px solid var(--accent-main); }
+        .label-after { right: 15px; z-index: 1; border-right: 2px solid var(--text-muted); }
+
+        /* ================= ПОРТФОЛИО ================= */
+        .filters { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 40px; justify-content: center;}
+        .filter-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 10px 20px; border-radius: 30px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat'; font-size: 13px; font-weight: 500;}
+        .filter-btn:hover { border-color: var(--accent-main); color: var(--text-main); }
+        .filter-btn.active { background: var(--accent-main); color: #fff; border-color: var(--accent-main); }
+
+        .empty-state { display: none; text-align: center; width: 100%; padding: 40px 20px; color: var(--text-muted); font-size: 1.1rem; border: 1px dashed var(--border-color); border-radius: 10px;}
+        .empty-state.show { display: block; }
+
+        .gallery-grid { column-count: 3; column-gap: 20px; }
+        .gallery-item { break-inside: avoid; margin-bottom: 20px; border-radius: 10px; overflow: hidden; position: relative; cursor: pointer; transition: transform 0.3s ease, opacity 0.4s ease; }
+        .gallery-item img { width: 100%; display: block; border-radius: 10px; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item.hide { display: none; }
+
+        /* ================= ДИПЛОМЫ ================= */
+        .certs-swiper { padding-bottom: 50px; }
+        .cert-card img { width: 100%; border-radius: 8px; border: 1px solid var(--border-color); }
+        .swiper-pagination-bullet { background: var(--accent-main); }
+
+        /* ================= ПОДВАЛ И КОПИРАЙТ ================= */
+        footer { 
+            background: #080808; padding: 80px 5% 40px; border-top: 1px solid var(--border-color); 
+            position: relative;
+        }
+        
+        /* Клюквенная неоновая линия вверху подвала */
+        footer::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--accent-main) 50%, transparent 100%);
+            box-shadow: 0 0 15px var(--accent-main);
+        }
+
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto; margin-bottom: 50px; }
+        
+        .footer-col h4 { font-size: 16px; color: var(--text-main); margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col p { color: var(--text-muted); font-size: 14px; margin-top: 20px; max-width: 300px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: 0.3s; cursor: pointer; }
+        .footer-links a:hover { color: var(--accent-main); }
+        
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a { display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--bg-alt); border: 1px solid var(--border-color); transition: 0.3s; }
+        .social-icons a svg { width: 20px; height: 20px; fill: var(--text-main); transition: 0.3s; }
+        .social-icons a:hover { background: var(--accent-main); border-color: var(--accent-main); transform: translateY(-3px); }
+        
+        /* Правильно оформленные авторские права */
+        .footer-bottom { 
+            padding-top: 30px; 
+            border-top: 1px solid var(--border-color); 
+            color: var(--text-muted); font-size: 13px; 
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px;
+        }
+
+        /* ================= МОБИЛЬНЫЙ АДАПТИВ ================= */
+        @media (max-width: 1100px) {
+            header { padding: 15px 5%; }
+            .header-btn { display: none; } 
+            
+            .menu-toggle { 
+                display: flex; flex-direction: column; justify-content: space-between;
+                width: 30px; height: 20px; cursor: pointer; z-index: 2100;
+            }
+            .menu-toggle span {
+                display: block; width: 100%; height: 2px; 
+                background-color: var(--accent-main); border-radius: 2px;
+                transition: all 0.3s ease-in-out;
+            }
+            .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+            nav { 
+                position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+                background: rgba(10, 10, 10, 0.98); 
+                backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+                flex-direction: column; align-items: center; justify-content: center; 
+                padding: 0; gap: 30px; z-index: 1900; 
+                display: flex; transform: translateX(-100%); transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            }
+            nav.active { transform: translateX(0); }
+            nav a { font-size: 18px; font-weight: 600; }
+        }
+
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 150px; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-text p { margin: 0 auto 30px; }
+            .hero-buttons { justify-content: center; flex-direction: column; }
+            .hero-img::before { display: none; }
+            
+            section { padding: 60px 5%; }
+            .section-title { font-size: 2rem; }
+            .ba-grid { grid-template-columns: 1fr; }
+            
+            .gallery-grid { column-count: 2; column-gap: 10px; }
+            .gallery-item { margin-bottom: 10px; }
+            .filters { justify-content: center; gap: 10px; }
+            .filter-btn { padding: 8px 15px; font-size: 11px; }
+            
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .footer-col p { margin: 20px auto; }
+            .social-icons { justify-content: center; }
+            .footer-bottom { justify-content: center; text-align: center; }
+        }
+        @media (max-width: 400px) { .gallery-grid { column-count: 1; } }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
     <!-- ШАПКА -->
-    <header>
-      <a href="#" class="logo-wrapper">
-        <!-- Векторная веточка по образцу iStock -->
-        <svg class="cranberry-svg" viewBox="0 0 40 40">
-          <path class="stem" d="M35 15 C 30 15, 25 22, 15 35" />
-          <path class="stem" d="M25 22 C 20 15, 15 12, 5 10" />
-          <path class="leaf" d="M5 10 Q 2 2, 10 5 Q 12 12, 5 10" />
-          <path class="leaf" d="M30 35 Q 38 38, 35 28 Q 28 25, 30 35" />
-          <!-- Ягоды -->
-          <g class="berry-group">
-            <circle class="berry" cx="22" cy="18" r="7" />
-            <path class="berry-star" d="M22 16 L23 18 L22 20 L21 18 Z" />
-          </g>
-          <g class="berry-group">
-            <circle class="berry" cx="12" cy="25" r="6" />
-            <path class="berry-star" d="M12 23 L13 25 L12 27 L11 25 Z" />
-          </g>
-          <g class="berry-group">
-            <circle class="berry" cx="28" cy="28" r="5.5" />
-            <path class="berry-star" d="M28 26 L29 28 L28 30 L27 28 Z" />
-          </g>
-        </svg>
-        <div class="logo-text">KLUKVA<span>DESIGN</span></div>
-      </a>
+    <header id="header">
+        <!-- ЛОГОТИП С ОЖИВШЕЙ КЛЮКВОЙ -->
+        <a href="#" class="logo-wrapper">
+            <svg class="cranberry-icon" viewBox="0 0 24 24">
+                <!-- Веточка -->
+                <path d="M4 20S8 14 13 10c4-3.2 8-2 8-2" />
+                <path d="M13 10c-2-2-4-2-4-2s.5 2.5 2.5 4" />
+                <path d="M17 7c-1.5-2.5-3.5-3-3.5-3s0 3 2.5 4.5" />
+                <!-- Ягодки (пульсируют) -->
+                <circle cx="10" cy="14" r="2" class="cranberry-berry" />
+                <circle cx="16" cy="11" r="2.5" class="cranberry-berry" style="animation-delay: 0.5s;" />
+                <circle cx="19" cy="6" r="1.5" class="cranberry-berry" style="animation-delay: 1s;" />
+            </svg>
+            <div class="logo-text">KLUKVA<span>DESIGN</span></div>
+        </a>
+        
+        <div class="menu-toggle" id="menuToggleBtn" onclick="toggleMobileMenu()">
+            <span></span><span></span><span></span>
+        </div>
 
-      <div class="menu-toggle" id="menuToggleBtn" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
-
-      <!-- Навигация -->
-      <nav id="nav-menu">
-        <a onclick="navigateToCategory('cards')">Карточки товара</a>
-        <a onclick="navigateToCategory('ai')">ИИ + Ретушь</a>
-        <a onclick="navigateToCategory('model')">Модельная съемка</a>
-        <a onclick="navigateToCategory('object')">Предметная съемка</a>
-        <a onclick="navigateToCategory('stage')">Stage design</a>
-        <a onclick="navigateToCategory('design')">Иллюстрация</a>
-        <a href="#about" onclick="toggleMenu()">Обо мне</a>
-      </nav>
-      <a href="https://t.me/ТВОЙ_НИК" class="header-btn">Связаться</a>
+        <!-- МЕНЮ -->
+        <nav id="nav-menu">
+            <a onclick="navigateToCategory('cards')">Карточки товара</a>
+            <a onclick="navigateToCategory('ai')">ИИ gen + ретушь</a>
+            <a onclick="navigateToCategory('model')">Модельная съемка</a>
+            <a onclick="navigateToCategory('object')">Предметная съемка</a>
+            <a onclick="navigateToCategory('stage')">Stage design</a>
+            <a onclick="navigateToCategory('design')">Дизайн и иллюстрация</a>
+            <a href="#about" onclick="closeMobileMenu()">Обо мне</a>
+        </nav>
+        <!-- КНОПКА ЗАЩИЩЕНА ОТ СИНЕГО ЦВЕТА КЛАССАМИ -->
+        <a href="#footer" class="btn btn-primary header-btn">Связаться</a>
     </header>
 
     <!-- ГЛАВНЫЙ ЭКРАН -->
     <section class="hero" id="about">
-      <div class="hero-text" data-aos="fade-right">
-        <h2>Татьяна • Контент-креатор</h2>
-        <h1>Создаю <span>визуал</span><br />который продает</h1>
-        <p>
-          Комплексный подход к контенту: от идеи и съемки до финальной
-          инфографики. Помогаю брендам выделяться на маркетплейсах.
-        </p>
-        <div class="hero-buttons">
-          <a href="#portfolio" class="btn btn-primary">Портфолио</a>
-          <a href="#footer" class="btn btn-outline">Контакты</a>
+        <div class="hero-text" data-aos="fade-right">
+            <h2>Татьяна • Контент-креатор</h2>
+            <h1>Продающий <br><span>визуал</span> для маркетплейсов</h1>
+            <p>Выполняю комплекс работ по созданию контента для WB и Ozon. Дизайн, инфографика, ретушь, модельная и предметная съемка под ключ.</p>
+            <div class="hero-buttons">
+                <!-- КНОПКИ ЗАЩИЩЕНЫ -->
+                <a href="#portfolio" class="btn btn-primary">Смотреть работы</a>
+                <a href="#footer" class="btn btn-outline">Обсудить проект</a>
+            </div>
         </div>
-      </div>
-      <div class="hero-img" data-aos="fade-left">
-        <img src="img/avaCert/avatar.webp" alt="Татьяна Фотограф" />
-      </div>
+        <div class="hero-img" data-aos="fade-left">
+            <img src="img/avaCert/avatar.webp" alt="Татьяна Фотограф">
+        </div>
     </section>
 
     <!-- ДО / ПОСЛЕ -->
     <section class="section-alt" id="before-after">
-      <div class="container">
-        <h2 class="section-title">Магия <span>До / После</span></h2>
-        <div class="ba-grid">
-          <!-- Пример 1 -->
-          <div class="ba-item" data-aos="zoom-in">
-            <div class="ba-slider-container">
-              <div class="ba-slider-img img-after">
-                <img src="img/after1.webp" alt="После" />
-                <div class="ba-label label-after">ПОСЛЕ</div>
-              </div>
-              <div class="ba-slider-img img-before">
-                <img src="img/before1.webp" alt="До" />
-                <div class="ba-label label-before">ДО</div>
-              </div>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value="50"
-                class="ba-range"
-                oninput="
-                  this.parentNode.style.setProperty(
-                    '--position',
-                    this.value + '%',
-                  )
-                "
-              />
-              <div class="slider-line">
-                <div class="slider-button">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"
-                    />
-                  </svg>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Магия <span>До / После</span></h2>
+            <div class="ba-grid">
+                
+                <div class="ba-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3 style="margin-bottom: 10px; font-size: 1.2rem;">Цветокоррекция и ИИ-фон</h3>
+                    <div class="ba-slider-container">
+                        <div class="ba-slider-img img-after">
+                            <img src="img/after1.webp" alt="После">
+                            <div class="ba-label label-after">ПОСЛЕ</div>
+                        </div>
+                        <div class="ba-slider-img img-before">
+                            <img src="img/before1.webp" alt="До">
+                            <div class="ba-label label-before">ДО</div>
+                        </div>
+                        <input type="range" min="0" max="100" value="50" class="ba-range" oninput="this.parentNode.style.setProperty('--position', this.value + '%')">
+                        <div class="slider-line">
+                            <div class="slider-button">
+                                <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <!-- Пример 2 -->
-          <div class="ba-item" data-aos="zoom-in" data-aos-delay="200">
-            <div class="ba-slider-container">
-              <div class="ba-slider-img img-after">
-                <img src="img/after2.webp" alt="После" />
-                <div class="ba-label label-after">ПОСЛЕ</div>
-              </div>
-              <div class="ba-slider-img img-before">
-                <img src="img/before2.webp" alt="До" />
-                <div class="ba-label label-before">ДО</div>
-              </div>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value="50"
-                class="ba-range"
-                oninput="
-                  this.parentNode.style.setProperty(
-                    '--position',
-                    this.value + '%',
-                  )
-                "
-              />
-              <div class="slider-line">
-                <div class="slider-button">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"
-                    />
-                  </svg>
+
+                <div class="ba-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3 style="margin-bottom: 10px; font-size: 1.2rem;">Ретушь и Инфографика</h3>
+                    <div class="ba-slider-container">
+                        <div class="ba-slider-img img-after">
+                            <img src="img/after2.webp" alt="После">
+                            <div class="ba-label label-after">ПОСЛЕ</div>
+                        </div>
+                        <div class="ba-slider-img img-before">
+                            <img src="img/before2.webp" alt="До">
+                            <div class="ba-label label-before">ДО</div>
+                        </div>
+                        <input type="range" min="0" max="100" value="50" class="ba-range" oninput="this.parentNode.style.setProperty('--position', this.value + '%')">
+                        <div class="slider-line">
+                            <div class="slider-button">
+                                <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
-    <!-- ПОРТФОЛИО -->
+    <!-- ПОРТФОЛИО С ФИЛЬТРАМИ -->
     <section id="portfolio">
-      <h2 class="section-title">Портфолио</h2>
-      <div class="filters">
-        <button class="filter-btn active" data-filter="cards">
-          Карточки товара
-        </button>
-        <button class="filter-btn" data-filter="ai">ИИ + Ретушь</button>
-        <button class="filter-btn" data-filter="model">Модельная съемка</button>
-        <button class="filter-btn" data-filter="object">
-          Предметная съемка
-        </button>
-        <button class="filter-btn" data-filter="stage">Stage design</button>
-        <button class="filter-btn" data-filter="design">Иллюстрация</button>
-      </div>
+        <h2 class="section-title" data-aos="fade-up">Моё <span>Портфолио</span></h2>
+        
+        <div class="filters" data-aos="fade-up">
+            <button class="filter-btn active" data-filter="cards">Карточки товара</button>
+            <button class="filter-btn" data-filter="ai">ИИ gen + ретушь</button>
+            <button class="filter-btn" data-filter="model">Модельная съемка</button>
+            <button class="filter-btn" data-filter="object">Предметная съемка</button>
+            <button class="filter-btn" data-filter="stage">Stage design</button>
+            <button class="filter-btn" data-filter="design">Дизайн и иллюстрация</button>
+        </div>
 
-      <div class="empty-state" id="emptyState">
-        В этой категории скоро появятся новые работы ✨
-      </div>
+        <div class="empty-state" id="emptyState">
+            В этой категории скоро появятся новые работы ✨
+        </div>
 
-      <div class="gallery-grid" id="gallery">
-        <!-- 16 карточек из папки img/cards/ -->
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p1.webp" />
+        <div class="gallery-grid" id="gallery" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p1.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p2.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p3.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p4.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p5.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p6.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p7.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p8.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p9.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p10.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p11.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p12.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p13.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p14.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p15.webp" alt="Карточка"></div>
+            <div class="gallery-item" data-category="cards"><img src="img/cards/p16.webp" alt="Карточка"></div>
         </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p2.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p3.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p4.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p5.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p6.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p7.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p8.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p9.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p10.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p11.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p12.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p13.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p14.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p15.webp" />
-        </div>
-        <div class="gallery-item" data-category="cards">
-          <img src="img/cards/p16.webp" />
-        </div>
-      </div>
     </section>
 
     <!-- ДИПЛОМЫ -->
     <section class="section-alt" id="certs">
-      <div class="container">
-        <h2 class="section-title">Сертификаты</h2>
-        <div class="swiper certs-swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide cert-card">
-              <img src="img/avaCert/cert1.webp" />
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Мои <span>Дипломы</span></h2>
+            <div class="swiper certs-swiper" data-aos="zoom-in">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide cert-card"><img src="img/avaCert/cert1.webp" alt="Сертификат"></div>
+                    <div class="swiper-slide cert-card"><img src="img/avaCert/cert2.webp" alt="Сертификат"></div>
+                    <div class="swiper-slide cert-card"><img src="img/avaCert/cert3.webp" alt="Сертификат"></div>
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
-            <div class="swiper-slide cert-card">
-              <img src="img/avaCert/cert2.webp" />
-            </div>
-            <div class="swiper-slide cert-card">
-              <img src="img/avaCert/cert3.webp" />
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
         </div>
-      </div>
     </section>
 
     <!-- ПОДВАЛ -->
     <footer id="footer">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>KlukvaDesign</h4>
-          <p>
-            Профессиональный контент для вашего бизнеса на маркетплейсах.
-            Красиво. Быстро. Эффективно.
-          </p>
+        <div class="footer-grid">
+            
+            <div class="footer-col" style="text-align: left;">
+                <a href="#" class="logo-wrapper" style="justify-content: flex-start; margin-bottom: 20px;">
+                    <svg class="cranberry-icon" viewBox="0 0 24 24">
+                        <path d="M4 20S8 14 13 10c4-3.2 8-2 8-2" />
+                        <path d="M13 10c-2-2-4-2-4-2s.5 2.5 2.5 4" />
+                        <path d="M17 7c-1.5-2.5-3.5-3-3.5-3s0 3 2.5 4.5" />
+                        <circle cx="10" cy="14" r="2" class="cranberry-berry" />
+                        <circle cx="16" cy="11" r="2.5" class="cranberry-berry" style="animation-delay: 0.5s;" />
+                        <circle cx="19" cy="6" r="1.5" class="cranberry-berry" style="animation-delay: 1s;" />
+                    </svg>
+                    <div class="logo-text">KLUKVA<span>DESIGN</span></div>
+                </a>
+                <p>Профессиональное создание визуального контента для маркетплейсов. Повышаю кликабельность и продажи.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Услуги</h4>
+                <ul class="footer-links">
+                    <li><a onclick="navigateToCategory('cards')">Карточки товара</a></li>
+                    <li><a onclick="navigateToCategory('model')">Модельная съемка</a></li>
+                    <li><a onclick="navigateToCategory('object')">Предметная съемка</a></li>
+                    <li><a onclick="navigateToCategory('ai')">ИИ-генерация</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:tatyana@yandex.ru">tatyana@yandex.ru</a></li>
+                    <li><a href="tel:+79990000000">+7 (999) 000-00-00</a></li>
+                    <li>г. Москва / Удаленно</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Мои соцсети</h4>
+                <div class="social-icons">
+                    <a href="https://t.me/ТВОЙ_НИК" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.98 1.25-5.58 3.69-.53.36-1.01.53-1.44.52-.47-.01-1.38-.26-2.06-.48-.83-.27-1.49-.42-1.43-.89.03-.25.38-.5.1-.76 1.63-.71 5.43-2.35 11.39-4.81 5.42-2.25 6.55-2.64 7.29-2.65.16 0 .52.04.71.21.16.15.19.35.2.53 0 .09-.01.21-.02.26z"/></svg>
+                    </a>
+                    <a href="#" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="footer-col">
-          <h4>Меню</h4>
-          <ul class="footer-links">
-            <li>
-              <a onclick="navigateToCategory('cards')">Карточки товара</a>
-            </li>
-            <li><a onclick="navigateToCategory('ai')">Ретушь</a></li>
-            <li><a onclick="navigateToCategory('model')">Съемка</a></li>
-          </ul>
+        
+        <!-- АВТОРСКИЕ ПРАВА -->
+        <div class="footer-bottom">
+            <span>© 2026 KlukvaDesign. Все права защищены.</span>
+            <span>Дизайн и разработка: KlukvaDesign</span>
         </div>
-        <div class="footer-col">
-          <h4>Контакты</h4>
-          <ul class="footer-links">
-            <li><a href="mailto:tatyana@yandex.ru">tatyana@yandex.ru</a></li>
-            <li><a href="tel:+79990000000">+7 (999) 000-00-00</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Соцсети</h4>
-          <div class="social-icons">
-            <a href="https://t.me/ТВОЙ_НИК" target="_blank"
-              ><svg viewBox="0 0 24 24">
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.98 1.25-5.58 3.69-.53.36-1.01.53-1.44.52-.47-.01-1.38-.26-2.06-.48-.83-.27-1.49-.42-1.43-.89.03-.25.38-.5.1-.76 1.63-.71 5.43-2.35 11.39-4.81 5.42-2.25 6.55-2.64 7.29-2.65.16 0 .52.04.71.21.16.15.19.35.2.53 0 .09-.01.21-.02.26z"
-                /></svg
-            ></a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">© 2024 KLUKVA DESIGN. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</div>
     </footer>
 
+    <!-- СКРИПТЫ -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+    
     <script>
-      AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 800, once: true, offset: 50 });
 
-      new Swiper(".certs-swiper", {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        pagination: { el: ".swiper-pagination", clickable: true },
-        breakpoints: { 600: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } },
-      });
-
-      function toggleMenu() {
-        const menu = document.getElementById("nav-menu");
-        const btn = document.getElementById("menuToggleBtn");
-        menu.classList.toggle("active");
-        btn.classList.toggle("active");
-        document.body.style.overflow = menu.classList.contains("active")
-          ? "hidden"
-          : "";
-      }
-
-      function navigateToCategory(cat) {
-        if (window.innerWidth <= 1150) toggleMenu();
-        document
-          .getElementById("portfolio")
-          .scrollIntoView({ behavior: "smooth" });
-        setTimeout(() => {
-          const target = document.querySelector(
-            `.filter-btn[data-filter="${cat}"]`,
-          );
-          if (target) target.click();
-        }, 500);
-      }
-
-      const filterBtns = document.querySelectorAll(".filter-btn");
-      const items = document.querySelectorAll(".gallery-item");
-      const empty = document.getElementById("emptyState");
-
-      filterBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          filterBtns.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          const val = btn.getAttribute("data-filter");
-          let found = false;
-          items.forEach((item) => {
-            if (val === "all" || item.getAttribute("data-category") === val) {
-              item.classList.remove("hide");
-              found = true;
-            } else {
-              item.classList.add("hide");
-            }
-          });
-          empty.classList.toggle("show", !found);
+        var certsSwiper = new Swiper(".certs-swiper", {
+            slidesPerView: 1, spaceBetween: 20, grabCursor: true,
+            pagination: { el: ".swiper-pagination", clickable: true },
+            breakpoints: { 600: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } }
         });
-      });
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const emptyState = document.getElementById('emptyState');
+
+        function navigateToCategory(categoryName) {
+            closeMobileMenu();
+            document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+            const targetBtn = document.querySelector(`.filter-btn[data-filter="${categoryName}"]`);
+            if(targetBtn) {
+                setTimeout(() => targetBtn.click(), 300);
+            }
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+                let hasVisibleItems = false;
+
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.classList.remove('hide');
+                        hasVisibleItems = true;
+                    } else {
+                        item.classList.add('hide');
+                    }
+                });
+
+                if (!hasVisibleItems) {
+                    emptyState.classList.add('show');
+                } else {
+                    emptyState.classList.remove('show');
+                }
+            });
+        });
+
+        function toggleMobileMenu() {
+            if(window.innerWidth <= 1100) {
+                var menu = document.getElementById("nav-menu");
+                var toggleBtn = document.getElementById("menuToggleBtn");
+                
+                menu.classList.toggle("active");
+                toggleBtn.classList.toggle("active");
+                
+                if(menu.classList.contains("active")) {
+                    document.body.style.overflow = "hidden"; 
+                } else {
+                    document.body.style.overflow = ""; 
+                }
+            }
+        }
+
+        function closeMobileMenu() {
+            var menu = document.getElementById("nav-menu");
+            var toggleBtn = document.getElementById("menuToggleBtn");
+            if(menu.classList.contains("active")) {
+                menu.classList.remove("active");
+                toggleBtn.classList.remove("active");
+                document.body.style.overflow = ""; 
+            }
+        }
     </script>
-  </body>
+</body>
 </html>
