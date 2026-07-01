@@ -3,7 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO и Open Graph (Превью для мессенджеров) -->
     <title>KlukvaDesign | Контент-креатор & Фотограф</title>
+    <meta
+      name="description"
+      content="Продающий визуал для маркетплейсов WB и Ozon. Дизайн, инфографика, ретушь, модельная и предметная съемка под ключ."
+    />
+    <meta
+      property="og:title"
+      content="KlukvaDesign | Инфографика для маркетплейсов"
+    />
+    <meta
+      property="og:description"
+      content="Повышаю CTR и продажи с помощью сочного дизайна. Модельная съемка, ретушь, инфографика."
+    />
+    <meta property="og:image" content="img/og-image.jpg" />
+    <!-- Картинка для превью -->
+    <meta property="og:type" content="website" />
+
+    <!-- Фавиконка -->
+    <link rel="icon" href="img/favicon.png" type="image/png" />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&display=swap"
@@ -16,11 +36,10 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <style>
-      /* ================= ПЕРЕМЕННЫЕ (ТЕМНАЯ ТЕМА - ПО УМОЛЧАНИЮ) ================= */
       :root {
         --bg-main: #121212;
         --bg-alt: #1a1a1a;
-        --accent-main: #e83a45; /* Сочный "Клюквенный" акцент */
+        --accent-main: #e83a45;
         --accent-hover: #ff4d58;
         --text-main: #ffffff;
         --text-muted: #9e9e9e;
@@ -29,11 +48,10 @@
         --shadow-color: rgba(0, 0, 0, 0.8);
       }
 
-      /* ================= ПЕРЕМЕННЫЕ (СВЕТЛАЯ ТЕМА) ================= */
       body.light-theme {
         --bg-main: #ffffff;
         --bg-alt: #f5f5f7;
-        --accent-main: #e83a45; /* Клюквенный цвет остается! */
+        --accent-main: #e83a45;
         --accent-hover: #d12b36;
         --text-main: #121212;
         --text-muted: #666666;
@@ -42,7 +60,6 @@
         --shadow-color: rgba(0, 0, 0, 0.1);
       }
 
-      /* Убиваем синие ссылки */
       a {
         text-decoration: none;
         color: inherit;
@@ -85,8 +102,6 @@
         background: transparent;
         transition: all 0.3s;
       }
-
-      /* ИСПРАВЛЕНИЕ: Красивая тень с легким клюквенным свечением */
       header.scrolled {
         padding: 12px 5%;
         background: var(--glass-bg);
@@ -105,7 +120,6 @@
         z-index: 2100;
         cursor: pointer;
       }
-
       .cranberry-icon {
         width: 36px;
         height: 36px;
@@ -185,8 +199,6 @@
         gap: 20px;
         z-index: 2100;
       }
-
-      /* Кнопка смены темы */
       .theme-toggle {
         cursor: pointer;
         font-size: 20px;
@@ -264,7 +276,7 @@
         z-index: 2100;
       }
 
-      /* ================= ПЛАВАЮЩИЕ КНОПКИ СВЯЗИ (TG + WA) ================= */
+      /* ================= ПЛАВАЮЩИЕ КНОПКИ ================= */
       .floating-contacts {
         position: fixed;
         bottom: 30px;
@@ -292,7 +304,6 @@
         height: 28px;
         fill: #fff;
       }
-
       .float-wa {
         background: linear-gradient(135deg, #25d366, #128c7e);
       }
@@ -611,7 +622,7 @@
         border: 1px solid var(--border-color);
       }
 
-      /* ================= ПОДВАЛ И КОПИРАЙТ ================= */
+      /* ================= ПОДВАЛ ================= */
       footer {
         background: var(--bg-alt);
         padding: 80px 5% 40px;
@@ -641,15 +652,12 @@
         margin: 0 auto;
         margin-bottom: 50px;
       }
-
-      /* ИСПРАВЛЕНИЕ: Центрирование первой колонки */
       .footer-col-center {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
-
       .footer-col h4 {
         font-size: 16px;
         color: var(--text-main);
@@ -669,8 +677,6 @@
       .footer-links li {
         margin-bottom: 12px;
       }
-
-      /* ИСПРАВЛЕНИЕ: Красные ссылки на услуги */
       .footer-links-services a {
         color: var(--accent-main);
         font-weight: 600;
@@ -682,7 +688,6 @@
         color: var(--accent-hover);
         text-decoration: underline;
       }
-
       .footer-links-contacts a {
         color: var(--text-muted);
         font-size: 14px;
@@ -723,7 +728,6 @@
         fill: #fff;
       }
 
-      /* ИСПРАВЛЕНИЕ: Логотип в самом низу */
       .footer-bottom {
         padding-top: 30px;
         border-top: 1px solid var(--border-color);
@@ -892,7 +896,6 @@
           transform-origin: center center;
         }
 
-        /* На мобилке виджет чуть меньше */
         .floating-contacts {
           bottom: 20px;
           right: 20px;
@@ -911,7 +914,6 @@
   <body>
     <!-- ПЛАВАЮЩИЕ КНОПКИ СВЯЗИ (TG + WA) -->
     <div class="floating-contacts">
-      <!-- WhatsApp -->
       <a
         href="https://wa.me/79990000000"
         target="_blank"
@@ -924,7 +926,6 @@
           />
         </svg>
       </a>
-      <!-- Telegram -->
       <a
         href="https://t.me/ТВОЙ_НИК"
         target="_blank"
@@ -986,7 +987,6 @@
       </a>
 
       <div class="header-controls">
-        <!-- КНОПКА ТЕМЫ -->
         <div class="theme-toggle" onclick="toggleTheme()" id="themeIcon">
           ☀️
         </div>
@@ -1004,8 +1004,9 @@
         <a onclick="navigateToCategory('ai')">ИИ gen + ретушь</a>
         <a onclick="navigateToCategory('model')">Модельная съемка</a>
         <a onclick="navigateToCategory('object')">Предметная съемка</a>
-        <a onclick="navigateToCategory('stage')">Stage design</a>
-        <a onclick="navigateToCategory('design')">Дизайн и иллюстрация</a>
+        <!-- Скрытые пустые категории -->
+        <!-- <a onclick="navigateToCategory('stage')">Stage design</a> -->
+        <!-- <a onclick="navigateToCategory('design')">Дизайн и иллюстрация</a> -->
         <a href="#about" onclick="closeMobileMenu()">Обо мне</a>
       </nav>
     </header>
@@ -1049,10 +1050,8 @@
           <button class="filter-btn" data-filter="object">
             Предметная съемка
           </button>
-          <button class="filter-btn" data-filter="stage">Stage design</button>
-          <button class="filter-btn" data-filter="design">
-            Дизайн и иллюстрация
-          </button>
+          <!-- <button class="filter-btn" data-filter="stage">Stage design</button> -->
+          <!-- <button class="filter-btn" data-filter="design">Дизайн и иллюстрация</button> -->
         </div>
 
         <div class="empty-state" id="emptyState">
@@ -1068,39 +1067,63 @@
         >
           <div class="portfolio-swiper swiper">
             <div class="swiper-wrapper">
+              <!-- ЛЕНИВАЯ ЗАГРУЗКА (loading="lazy") ДОБАВЛЕНА -->
               <div class="swiper-slide">
-                <img src="img/cards/card1.webp" alt="Карточка 1" />
+                <img
+                  src="img/cards/card1.webp"
+                  loading="lazy"
+                  alt="Карточка 1"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="img/cards/card2.webp" alt="Карточка 2" />
+                <img
+                  src="img/cards/card2.webp"
+                  loading="lazy"
+                  alt="Карточка 2"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="img/cards/card3.webp" alt="Карточка 3" />
+                <img
+                  src="img/cards/card3.webp"
+                  loading="lazy"
+                  alt="Карточка 3"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="img/cards/card4.webp" alt="Карточка 4" />
+                <img
+                  src="img/cards/card4.webp"
+                  loading="lazy"
+                  alt="Карточка 4"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="img/cards/card5.webp" alt="Карточка 5" />
+                <img
+                  src="img/cards/card5.webp"
+                  loading="lazy"
+                  alt="Карточка 5"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="img/cards/card6.webp" alt="Карточка 6" />
+                <img
+                  src="img/cards/card6.webp"
+                  loading="lazy"
+                  alt="Карточка 6"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="img/cards/card7.webp" alt="Карточка 7" />
+                <img
+                  src="img/cards/card7.webp"
+                  loading="lazy"
+                  alt="Карточка 7"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="img/cards/card8.webp" alt="Карточка 8" />
+                <img
+                  src="img/cards/card8.webp"
+                  loading="lazy"
+                  alt="Карточка 8"
+                />
               </div>
-
-              <!-- Заготовки до 15 -->
-              <!-- <div class="swiper-slide"><img src="img/cards/card9.webp" alt="Карточка 9"></div> -->
-              <!-- <div class="swiper-slide"><img src="img/cards/card10.webp" alt="Карточка 10"></div> -->
-              <!-- <div class="swiper-slide"><img src="img/cards/card11.webp" alt="Карточка 11"></div> -->
-              <!-- <div class="swiper-slide"><img src="img/cards/card12.webp" alt="Карточка 12"></div> -->
-              <!-- <div class="swiper-slide"><img src="img/cards/card13.webp" alt="Карточка 13"></div> -->
-              <!-- <div class="swiper-slide"><img src="img/cards/card14.webp" alt="Карточка 14"></div> -->
-              <!-- <div class="swiper-slide"><img src="img/cards/card15.webp" alt="Карточка 15"></div> -->
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -1113,16 +1136,32 @@
           <div class="portfolio-swiper swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <img src="img/gen-retouch/gen1.webp" alt="ИИ 1" />
+                <img
+                  src="img/gen-retouch/gen1.webp"
+                  loading="lazy"
+                  alt="ИИ 1"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="img/gen-retouch/gen2.webp" alt="ИИ 2" />
+                <img
+                  src="img/gen-retouch/gen2.webp"
+                  loading="lazy"
+                  alt="ИИ 2"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="img/gen-retouch/gen3.webp" alt="ИИ 3" />
+                <img
+                  src="img/gen-retouch/gen3.webp"
+                  loading="lazy"
+                  alt="ИИ 3"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="img/gen-retouch/gen4.webp" alt="ИИ 4" />
+                <img
+                  src="img/gen-retouch/gen4.webp"
+                  loading="lazy"
+                  alt="ИИ 4"
+                />
               </div>
             </div>
             <div class="swiper-button-next"></div>
@@ -1136,13 +1175,25 @@
           <div class="portfolio-swiper swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <img src="img/models/model1.webp" alt="Модель 1" />
+                <img
+                  src="img/models/model1.webp"
+                  loading="lazy"
+                  alt="Модель 1"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="img/models/model2.webp" alt="Модель 2" />
+                <img
+                  src="img/models/model2.webp"
+                  loading="lazy"
+                  alt="Модель 2"
+                />
               </div>
               <div class="swiper-slide">
-                <img src="img/models/model3.webp" alt="Модель 3" />
+                <img
+                  src="img/models/model3.webp"
+                  loading="lazy"
+                  alt="Модель 3"
+                />
               </div>
             </div>
             <div class="swiper-button-next"></div>
@@ -1156,7 +1207,11 @@
           <div class="portfolio-swiper swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <img src="img/products/product1.webp" alt="Предмет 1" />
+                <img
+                  src="img/products/product1.webp"
+                  loading="lazy"
+                  alt="Предмет 1"
+                />
               </div>
             </div>
             <div class="swiper-button-next"></div>
@@ -1164,10 +1219,6 @@
             <div class="swiper-pagination"></div>
           </div>
         </div>
-
-        <!-- ПУСТЫЕ ТАБЫ -->
-        <div class="portfolio-tab" id="tab-stage"></div>
-        <div class="portfolio-tab" id="tab-design"></div>
       </div>
     </section>
 
@@ -1184,11 +1235,19 @@
             </h3>
             <div class="ba-slider-container">
               <div class="ba-slider-img img-after">
-                <img src="img/before-after/after1.webp" alt="После" />
+                <img
+                  src="img/before-after/after1.webp"
+                  loading="lazy"
+                  alt="После"
+                />
                 <div class="ba-label label-after">ПОСЛЕ</div>
               </div>
               <div class="ba-slider-img img-before">
-                <img src="img/before-after/before1.webp" alt="До" />
+                <img
+                  src="img/before-after/before1.webp"
+                  loading="lazy"
+                  alt="До"
+                />
                 <div class="ba-label label-before">ДО</div>
               </div>
               <input
@@ -1222,11 +1281,19 @@
             </h3>
             <div class="ba-slider-container">
               <div class="ba-slider-img img-after">
-                <img src="img/before-after/after2.webp" alt="После" />
+                <img
+                  src="img/before-after/after2.webp"
+                  loading="lazy"
+                  alt="После"
+                />
                 <div class="ba-label label-after">ПОСЛЕ</div>
               </div>
               <div class="ba-slider-img img-before">
-                <img src="img/before-after/before2.webp" alt="До" />
+                <img
+                  src="img/before-after/before2.webp"
+                  loading="lazy"
+                  alt="До"
+                />
                 <div class="ba-label label-before">ДО</div>
               </div>
               <input
@@ -1257,8 +1324,58 @@
       </div>
     </section>
 
+    <!-- ЭТАПЫ РАБОТЫ (ИСПРАВЛЕННЫЙ МАРКЕТИНГОВЫЙ ТЕКСТ) -->
+    <section class="section-alt" id="process">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">
+          Как мы <span>Работаем</span>
+        </h2>
+        <div class="steps-grid">
+          <div
+            class="step-card glass-card"
+            data-aos="flip-left"
+            data-aos-delay="100"
+          >
+            <div class="step-num">1</div>
+            <h4>Бриф</h4>
+            <p>Обсуждаем ваш товар, целевую аудиторию и пожелания по стилю.</p>
+          </div>
+          <div
+            class="step-card glass-card"
+            data-aos="flip-left"
+            data-aos-delay="200"
+          >
+            <div class="step-num">2</div>
+            <h4>Анализ</h4>
+            <p>Изучаю ТОП выдачи, чтобы сделать дизайн заметнее конкурентов.</p>
+          </div>
+          <div
+            class="step-card glass-card"
+            data-aos="flip-left"
+            data-aos-delay="300"
+          >
+            <div class="step-num">3</div>
+            <h4>Дизайн</h4>
+            <p>Создаю сочную инфографику. Скидываю вам на утверждение.</p>
+          </div>
+          <div
+            class="step-card glass-card"
+            data-aos="flip-left"
+            data-aos-delay="400"
+          >
+            <div class="step-num">4</div>
+            <h4>Правки и Готово</h4>
+            <p>
+              Вносим корректировки до идеала (2 круга бесплатных правок). Вы
+              получаете готовые файлы в высоком качестве.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ДИПЛОМЫ -->
-    <section class="section-alt" id="certs">
+    <section id="certs">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">
           Мои <span>Дипломы</span>
@@ -1266,13 +1383,25 @@
         <div class="swiper certs-swiper" data-aos="zoom-in">
           <div class="swiper-wrapper">
             <div class="swiper-slide cert-card">
-              <img src="img/avaCert/cert1.webp" alt="Сертификат" />
+              <img
+                src="img/avaCert/cert1.webp"
+                loading="lazy"
+                alt="Сертификат"
+              />
             </div>
             <div class="swiper-slide cert-card">
-              <img src="img/avaCert/cert2.webp" alt="Сертификат" />
+              <img
+                src="img/avaCert/cert2.webp"
+                loading="lazy"
+                alt="Сертификат"
+              />
             </div>
             <div class="swiper-slide cert-card">
-              <img src="img/avaCert/cert3.webp" alt="Сертификат" />
+              <img
+                src="img/avaCert/cert3.webp"
+                loading="lazy"
+                alt="Сертификат"
+              />
             </div>
           </div>
           <div class="swiper-pagination"></div>
@@ -1283,7 +1412,6 @@
     <!-- ПОДВАЛ -->
     <footer id="footer">
       <div class="footer-grid">
-        <!-- ИСПРАВЛЕНИЕ: Выравнивание по центру -->
         <div class="footer-col footer-col-center">
           <a
             href="#"
@@ -1341,7 +1469,6 @@
         <div class="footer-col">
           <h4>Услуги</h4>
           <ul class="footer-links footer-links-services">
-            <!-- ИСПРАВЛЕНИЕ: Красные ссылки на услуги -->
             <li>
               <a onclick="navigateToCategory('cards')">Карточки товара</a>
             </li>
@@ -1367,7 +1494,6 @@
         <div class="footer-col">
           <h4>Мои соцсети</h4>
           <div class="social-icons">
-            <!-- ИСПРАВЛЕНИЕ: Добавлен WhatsApp -->
             <a href="https://wa.me/79990000000" target="_blank">
               <svg viewBox="0 0 24 24">
                 <path
@@ -1388,7 +1514,6 @@
 
       <div class="footer-bottom">
         <span>© 2026 KlukvaDesign. Все права защищены.</span>
-        <!-- ИСПРАВЛЕНИЕ: Логотип в самом низу -->
         <a href="#" class="logo-wrapper footer-mini-logo">
           <svg
             class="cranberry-icon"
