@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO и Open Graph (Превью для мессенджеров) -->
+    <!-- SEO и Open Graph -->
     <title>KlukvaDesign | Контент-креатор & Фотограф</title>
     <meta
       name="description"
@@ -18,11 +18,14 @@
       property="og:description"
       content="Повышаю CTR и продажи с помощью сочного дизайна. Модельная съемка, ретушь, инфографика."
     />
-    <meta property="og:image" content="img/og-image.jpg" />
-    <!-- Картинка для превью -->
+
+    <!-- ВАЖНО: ВСТАВЬ СЮДА ПОЛНУЮ ССЫЛКУ НА КАРТИНКУ (начинающуюся с https://...) -->
+    <meta
+      property="og:image"
+      content="https://webartai.github.io/KlukvaDesign/img/og-image.jpg"
+    />
     <meta property="og:type" content="website" />
 
-    <!-- Фавиконка -->
     <link rel="icon" href="img/favicon.png" type="image/png" />
 
     <link
@@ -58,6 +61,16 @@
         --border-color: #e0e0e0;
         --glass-bg: rgba(255, 255, 255, 0.9);
         --shadow-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .img-light {
+        display: none !important;
+      }
+      body.light-theme .img-dark {
+        display: none !important;
+      }
+      body.light-theme .img-light {
+        display: block !important;
       }
 
       a {
@@ -612,6 +625,174 @@
         border-right: 2px solid var(--text-muted);
       }
 
+      /* ================= УСЛУГИ (ВОССТАНОВЛЕНО) ================= */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+      }
+      .service-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        text-align: left;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 15px;
+        padding: 40px 30px;
+        transition:
+          transform 0.3s,
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-main);
+        box-shadow: 0 10px 30px var(--shadow-color);
+      }
+      .service-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--text-main);
+      }
+      .service-card p {
+        color: var(--text-muted);
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+      }
+      .service-price {
+        font-size: 1.8rem;
+        color: var(--accent-main);
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        border-top: 1px solid var(--border-color);
+        padding-top: 15px;
+        margin-top: auto;
+      }
+
+      /* ================= ЭТАПЫ РАБОТЫ (ИСПРАВЛЕНО: КРУПНЫЕ ЦИФРЫ) ================= */
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      .step-card {
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 15px;
+        padding: 40px 30px;
+        transition:
+          transform 0.3s,
+          border-color 0.3s;
+      }
+      .step-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-main);
+      }
+
+      /* Крупные цифры на фоне */
+      .step-num {
+        font-size: 8rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        color: var(--accent-main);
+        opacity: 0.15; /* Клюквенный цвет с прозрачностью */
+        position: absolute;
+        top: -20px;
+        right: 10px;
+        line-height: 1;
+        z-index: 1;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+      }
+      .step-card:hover .step-num {
+        opacity: 0.25;
+        transform: scale(1.05);
+      }
+
+      .step-card h4 {
+        font-size: 1.3rem;
+        color: var(--accent-main);
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 2;
+      }
+      .step-card p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        position: relative;
+        z-index: 2;
+      }
+
+      /* ================= ОБО МНЕ (ВОССТАНОВЛЕНО) ================= */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+      .about-text {
+        text-align: left;
+      }
+      .about-text h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--text-main);
+      }
+      .about-list {
+        list-style: none;
+        margin-bottom: 30px;
+      }
+      .about-list li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 15px;
+        color: var(--text-muted);
+      }
+      .about-list li::before {
+        content: "✔";
+        position: absolute;
+        left: 0;
+        color: var(--accent-main);
+        font-weight: bold;
+      }
+      .about-stats {
+        display: flex;
+        gap: 40px;
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid var(--border-color);
+      }
+      .stat-item h4 {
+        font-size: 2.5rem;
+        color: var(--accent-main);
+        margin-bottom: 5px;
+        line-height: 1;
+      }
+      .stat-item p {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-main);
+      }
+      .about-photo {
+        border-radius: 20px;
+        overflow: hidden;
+      }
+      .about-photo img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
       /* ================= ДИПЛОМЫ ================= */
       .certs-swiper {
         padding-bottom: 50px;
@@ -877,6 +1058,23 @@
           font-size: 11px;
         }
 
+        .about-grid,
+        .services-grid,
+        .steps-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-stats {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+        }
+        .about-text {
+          text-align: center;
+        }
+        .about-list li {
+          text-align: left;
+        }
+
         .footer-grid {
           grid-template-columns: 1fr;
           text-align: center;
@@ -1004,7 +1202,6 @@
         <a onclick="navigateToCategory('ai')">ИИ gen + ретушь</a>
         <a onclick="navigateToCategory('model')">Модельная съемка</a>
         <a onclick="navigateToCategory('object')">Предметная съемка</a>
-        <!-- Скрытые пустые категории -->
         <!-- <a onclick="navigateToCategory('stage')">Stage design</a> -->
         <!-- <a onclick="navigateToCategory('design')">Дизайн и иллюстрация</a> -->
         <a href="#about" onclick="closeMobileMenu()">Обо мне</a>
@@ -1012,7 +1209,7 @@
     </header>
 
     <!-- ГЛАВНЫЙ ЭКРАН -->
-    <section class="hero" id="about">
+    <section class="hero" id="home">
       <div class="hero-text" data-aos="fade-right">
         <h2>Татьяна • Контент-креатор</h2>
         <h1>Продающий <br /><span>визуал</span> для маркетплейсов</h1>
@@ -1028,7 +1225,16 @@
         </div>
       </div>
       <div class="hero-img" data-aos="fade-left">
-        <img src="img/avaCert/avatar.webp" alt="Татьяна Фотограф" />
+        <img
+          src="img/avaCert/avatar.webp"
+          class="img-dark"
+          alt="Татьяна Фотограф"
+        />
+        <img
+          src="img/avaCert/avatar-light.webp"
+          class="img-light"
+          alt="Татьяна Фотограф"
+        />
       </div>
     </section>
 
@@ -1050,8 +1256,6 @@
           <button class="filter-btn" data-filter="object">
             Предметная съемка
           </button>
-          <!-- <button class="filter-btn" data-filter="stage">Stage design</button> -->
-          <!-- <button class="filter-btn" data-filter="design">Дизайн и иллюстрация</button> -->
         </div>
 
         <div class="empty-state" id="emptyState">
@@ -1067,7 +1271,6 @@
         >
           <div class="portfolio-swiper swiper">
             <div class="swiper-wrapper">
-              <!-- ЛЕНИВАЯ ЗАГРУЗКА (loading="lazy") ДОБАВЛЕНА -->
               <div class="swiper-slide">
                 <img
                   src="img/cards/card1.webp"
@@ -1124,6 +1327,13 @@
                   alt="Карточка 8"
                 />
               </div>
+              <!-- <div class="swiper-slide"><img src="img/cards/card9.webp" loading="lazy" alt="Карточка 9"></div> -->
+              <!-- <div class="swiper-slide"><img src="img/cards/card10.webp" loading="lazy" alt="Карточка 10"></div> -->
+              <!-- <div class="swiper-slide"><img src="img/cards/card11.webp" loading="lazy" alt="Карточка 11"></div> -->
+              <!-- <div class="swiper-slide"><img src="img/cards/card12.webp" loading="lazy" alt="Карточка 12"></div> -->
+              <!-- <div class="swiper-slide"><img src="img/cards/card13.webp" loading="lazy" alt="Карточка 13"></div> -->
+              <!-- <div class="swiper-slide"><img src="img/cards/card14.webp" loading="lazy" alt="Карточка 14"></div> -->
+              <!-- <div class="swiper-slide"><img src="img/cards/card15.webp" loading="lazy" alt="Карточка 15"></div> -->
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -1324,51 +1534,119 @@
       </div>
     </section>
 
-    <!-- ЭТАПЫ РАБОТЫ (ИСПРАВЛЕННЫЙ МАРКЕТИНГОВЫЙ ТЕКСТ) -->
-    <section class="section-alt" id="process">
+    <!-- УСЛУГИ И ЦЕНЫ (ВОССТАНОВЛЕНО) -->
+    <section class="section-alt" id="services">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">
+          Мои <span>Услуги</span>
+        </h2>
+        <div class="services-grid">
+          <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>Главная карточка</h3>
+            <p>
+              Анализ конкурентов, разработка концепции, выделение главных УТП,
+              кликабельный дизайн, пробивающий слепоту.
+            </p>
+            <div class="service-price">от 1 500 ₽</div>
+          </div>
+          <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>Внутренние слайды</h3>
+            <p>
+              Логичное раскрытие преимуществ товара, инфографика характеристик,
+              закрытие страхов и возражений покупателя.
+            </p>
+            <div class="service-price">от 800 ₽ / шт.</div>
+          </div>
+          <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>Rich-контент (Ozon)</h3>
+            <p>
+              Создание длинного продающего лендинга внутри карточки товара для
+              максимальной конверсии и доверия к бренду.
+            </p>
+            <div class="service-price">от 4 000 ₽</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЭТАПЫ РАБОТЫ (ИСПРАВЛЕНО: КАРТОЧКИ С БОЛЬШИМИ ЦИФРАМИ) -->
+    <section id="process">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">
           Как мы <span>Работаем</span>
         </h2>
         <div class="steps-grid">
-          <div
-            class="step-card glass-card"
-            data-aos="flip-left"
-            data-aos-delay="100"
-          >
+          <div class="step-card" data-aos="flip-left" data-aos-delay="100">
             <div class="step-num">1</div>
             <h4>Бриф</h4>
             <p>Обсуждаем ваш товар, целевую аудиторию и пожелания по стилю.</p>
           </div>
-          <div
-            class="step-card glass-card"
-            data-aos="flip-left"
-            data-aos-delay="200"
-          >
+          <div class="step-card" data-aos="flip-left" data-aos-delay="200">
             <div class="step-num">2</div>
             <h4>Анализ</h4>
             <p>Изучаю ТОП выдачи, чтобы сделать дизайн заметнее конкурентов.</p>
           </div>
-          <div
-            class="step-card glass-card"
-            data-aos="flip-left"
-            data-aos-delay="300"
-          >
+          <div class="step-card" data-aos="flip-left" data-aos-delay="300">
             <div class="step-num">3</div>
             <h4>Дизайн</h4>
             <p>Создаю сочную инфографику. Скидываю вам на утверждение.</p>
           </div>
-          <div
-            class="step-card glass-card"
-            data-aos="flip-left"
-            data-aos-delay="400"
-          >
+          <div class="step-card" data-aos="flip-left" data-aos-delay="400">
             <div class="step-num">4</div>
             <h4>Правки и Готово</h4>
             <p>
               Вносим корректировки до идеала (2 круга бесплатных правок). Вы
               получаете готовые файлы в высоком качестве.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ОБО МНЕ (ВОССТАНОВЛЕНО) -->
+    <section class="section-alt" id="about">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Обо <span>мне</span></h2>
+        <div class="about-grid">
+          <div class="about-text" data-aos="fade-right">
+            <h3>Привет! Я профи в инфографике.</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px">
+              Моя цель — не просто сделать «красивую картинку», а создать
+              инструмент, который будет <b>продавать ваш товар</b> каждый день.
+            </p>
+
+            <ul class="about-list">
+              <li>Анализирую боли вашей целевой аудитории</li>
+              <li>Изучаю топы выдачи и конкурентов</li>
+              <li>Выстраиваю логичную воронку внутри карточки</li>
+              <li>Знаю, как поднять ваш CTR (кликабельность)</li>
+            </ul>
+
+            <div class="about-stats">
+              <div class="stat-item">
+                <h4>500+</h4>
+                <p>Артикулов</p>
+              </div>
+              <div class="stat-item">
+                <h4>2 года</h4>
+                <p>Опыта</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-photo" data-aos="fade-left">
+            <img
+              src="img/avaCert/avatar.webp"
+              class="img-dark"
+              loading="lazy"
+              alt="Дизайнер"
+            />
+            <img
+              src="img/avaCert/avatar-light.webp"
+              class="img-light"
+              loading="lazy"
+              alt="Дизайнер"
+            />
           </div>
         </div>
       </div>
