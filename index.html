@@ -61,6 +61,16 @@
         --shadow-color: rgba(0, 0, 0, 0.1);
       }
 
+      .img-light {
+        display: none !important;
+      }
+      body.light-theme .img-dark {
+        display: none !important;
+      }
+      body.light-theme .img-light {
+        display: block !important;
+      }
+
       a {
         text-decoration: none;
         color: inherit;
@@ -926,31 +936,28 @@
       }
 
       @media (max-width: 900px) {
-        /* ИСПРАВЛЕНИЕ 1: Ювелирная настройка отступов главного экрана */
+        /* ИСПРАВЛЕНИЕ: Меньше отступ сверху, чтобы всё влезло на 1 экран */
         .hero {
           grid-template-columns: 1fr;
           text-align: center;
-          padding-top: 120px;
+          padding-top: 100px;
           padding-bottom: 20px;
         }
 
-        /* ИСПРАВЛЕНИЕ 2: Две строки для "Татьяна Контент-креатор" */
+        /* ИСПРАВЛЕНИЕ: Уменьшили размер заголовка и добавили "воздух" между строками */
         .hero-text h2 {
-          line-height: 1.3;
-          margin-bottom: 15px;
+          line-height: 1.4;
+          margin-bottom: 25px;
         }
-
         .hero-text h1 {
-          font-size: 2.1rem;
+          font-size: 1.9rem;
           word-wrap: break-word;
           overflow-wrap: break-word;
           hyphens: auto;
-          margin-bottom: 10px;
+          margin-bottom: 20px;
         }
-
-        /* ИСПРАВЛЕНИЕ 3: Легкое сжатие текста, чтобы кнопки не уехали */
         .hero-text p {
-          margin: 0 auto 15px;
+          margin: 0 auto 30px;
           padding: 0 10px;
           font-size: 0.95rem;
           line-height: 1.5;
@@ -1145,7 +1152,6 @@
     <!-- ГЛАВНЫЙ ЭКРАН -->
     <section class="hero" id="about">
       <div class="hero-text" data-aos="fade-right">
-        <!-- ИСПРАВЛЕНИЕ: Разбито на две строки через <br> -->
         <h2>Татьяна <br />Контент-креатор</h2>
         <h1>Продающий <br /><span>визуал</span> для маркетплейсов</h1>
         <p>
@@ -1158,7 +1164,6 @@
           <a onclick="navigateToCategory('cards')" class="btn btn-primary"
             >Смотреть работы</a
           >
-          <!-- ИСПРАВЛЕНИЕ: Кнопка ведет напрямую в Telegram -->
           <a
             href="https://t.me/ТВОЙ_НИК"
             target="_blank"
